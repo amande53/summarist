@@ -3,6 +3,8 @@ import { AiFillAudio, AiFillBulb, AiFillFileText } from "react-icons/ai";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { RiLeafLine } from "react-icons/ri";
+import LoginButton from "./components/LoginButton";
+import NavLogin from "./components/NavLogin";
 
 export default function Home() {
   return (
@@ -19,7 +21,7 @@ export default function Home() {
             />
           </figure>
           <ul className="nav__list--wrapper">
-            <li className="nav__list nav__list--login">Login</li>
+            <NavLogin />
             <li className="nav__list nav__list--mobile">About</li>
             <li className="nav__list nav__list--mobile">Contact</li>
             <li className="nav__list nav__list--mobile">Help</li>
@@ -42,7 +44,7 @@ export default function Home() {
                   <br className="remove--tablet" />
                   and even people who don’t like to read.
                 </div>
-                <button className="btn home__cta--btn">Login</button>
+                <LoginButton />
               </div>
               <figure className="landing__image--mask">
                 <Image
@@ -214,7 +216,7 @@ export default function Home() {
               </div>
             </div>
             <div className="reviews__btn--wrapper">
-              <button className="btn home__cta--btn">Login</button>
+              <LoginButton />
             </div>
           </div>
         </div>
