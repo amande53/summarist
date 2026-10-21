@@ -3,7 +3,7 @@ import { AiFillAudio, AiFillBulb, AiFillFileText } from "react-icons/ai";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { RiLeafLine } from "react-icons/ri";
-import LoginButton from "./components/LoginButton";
+import LoginButton from "./components/UI/LoginButton";
 import NavLogin from "./components/NavLogin";
 
 export default function Home() {

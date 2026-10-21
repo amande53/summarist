@@ -7,13 +7,45 @@ import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import OrDivider from "./UI/OrDivider";
 import { IoClose } from "react-icons/io5";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase/firebase";
+import { useRouter } from "next/navigation";
 
 export default function AuthModal() {
   const dispatch = useDispatch<AppDispatch>();
   const isOpen = useSelector((state: RootState) => state.modalSlice.isOpen);
-  const [newUser, setNewUser] = useState(false);
+  const [newUser, setNewUser] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const router = useRouter();
 
   if (!isOpen) return null;
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+
+    if (newUser) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          dispatch(closeModal());
+          router.push("/for-you");
+        })
+        .catch((err) => {
+          setError(err.code);
+        });
+    } else {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          dispatch(closeModal());
+          router.push("/for-you");
+        })
+        .catch((err) => {
+          setError(err.code);
+        });
+    }
+  };
 
   return (
     <div className="fixed top-0 left-0 h-full bg-black/75  flex justify-center items-center flex-col w-full z-9999">
@@ -22,11 +54,22 @@ export default function AuthModal() {
           <div className="text-center text-xl font-bold mb-6 text-sky-950">
             {newUser ? "Sign up" : "Log In"} to Summarist
           </div>
+          {error && <div className="mb-4 text-[#f56c6c]">Firebase: Error {error}</div>}
           {!newUser && (
             <>
               <button
                 className="relative flex bg-[#3a579d] hover:bg-[#25396b] duration-200 text-white justify-center w-full h-10 rounded-sm
               items-center min-w-45 text-base "
+                onClick={() => {
+                  signInWithEmailAndPassword(auth, "guest@guest.com", "guest123")
+                    .then(() => {
+                      dispatch(closeModal());
+                      router.push("/for-you");
+                    })
+                    .catch((err) => {
+                      setError(err.code);
+                    });
+                }}
               >
                 <span className="rounded-sm left-0.5 absolute flex items-center justify-center w-9 h-9">
                   <FaUser className="w-6 h-6" />
@@ -54,18 +97,23 @@ export default function AuthModal() {
           <form
             action=""
             className="flex flex-col gap-4"
+            onSubmit={handleSubmit}
           >
             <input
               type="email"
               placeholder="Email Address"
               className="h-10 border-2 border-[#bac8ce] rounded-sm text-[#394547] px-3 focus:border-[#2bd97c] focus:outline-hidden"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
             <input
               type="password"
               placeholder="Password"
               className="h-10 border-2 border-[#bac8ce] rounded-sm text-[#394547] px-3 focus:border-[#2bd97c] focus:outline-hidden"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
-            <button className="w-full h-10 rounded-sm text-base flex items-center justify-center bg-transparent min-w-45 hover:bg-[#2bd97c] duration-200">
+            <button className="w-full h-10 rounded-sm text-base flex items-center bg-[#2bd97c] justify-center  min-w-45 hover:bg-[#20ba68] duration-200">
               {newUser ? "Sign Up" : "Login"}
             </button>
           </form>
@@ -77,7 +125,12 @@ export default function AuthModal() {
         )}
         <button
           className="h-10 text-center bg-stone-100 text-[#116be9] w-full rounded-[0_0_4px_4px] font-light text-base hover:bg-mist-200"
-          onClick={() => setNewUser(!newUser)}
+          onClick={() => {
+            setNewUser(!newUser);
+            setError("");
+            setPassword("");
+            setEmail("");
+          }}
         >
           {newUser ? "Already have an account?" : "Don't have an account"}
         </button>
@@ -86,6 +139,7 @@ export default function AuthModal() {
             onClick={() => {
               dispatch(closeModal());
               setNewUser(false);
+              setError("");
             }}
           >
             <IoClose className="transition-opacity duration-200 hover:opacity-50 w-7 h-7" />
