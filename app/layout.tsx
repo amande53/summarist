@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import StoreProvider from "./Redux/storeProvider";
+import AuthModal from "./components/AuthModal";
 
 export const metadata: Metadata = {
   title: "Summarist",
@@ -9,7 +11,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <StoreProvider>
+          <AuthModal />
+          {children}
+        </StoreProvider>
+      </body>
     </html>
   );
 }

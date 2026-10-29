@@ -3,6 +3,9 @@ import { AiFillAudio, AiFillBulb, AiFillFileText } from "react-icons/ai";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { RiLeafLine } from "react-icons/ri";
+import LoginButton from "./components/UI/LoginButton";
+import NavLogin from "./components/NavLogin";
+import Statistics from "./components/Statistics";
 
 export default function Home() {
   return (
@@ -19,7 +22,7 @@ export default function Home() {
             />
           </figure>
           <ul className="nav__list--wrapper">
-            <li className="nav__list nav__list--login">Login</li>
+            <NavLogin />
             <li className="nav__list nav__list--mobile">About</li>
             <li className="nav__list nav__list--mobile">Contact</li>
             <li className="nav__list nav__list--mobile">Help</li>
@@ -42,7 +45,7 @@ export default function Home() {
                   <br className="remove--tablet" />
                   and even people who don’t like to read.
                 </div>
-                <button className="btn home__cta--btn">Login</button>
+                <LoginButton />
               </div>
               <figure className="landing__image--mask">
                 <Image
@@ -88,14 +91,16 @@ export default function Home() {
               </div>
             </div>
             <div className="statistics__wrapper">
-              <div className="statistics__content--header">
-                <div className="statistics__heading">Enhance your knowledge</div>
-                <div className="statistics__heading">Achieve greater success</div>
-                <div className="statistics__heading">Improve your health</div>
-                <div className="statistics__heading">Develop better parenting skills</div>
-                <div className="statistics__heading">Increase happiness</div>
-                <div className="statistics__heading">Be the best version of yourself!</div>
-              </div>
+              <Statistics
+                stats={[
+                  "Enhance your knowledge",
+                  "Achieve greater success",
+                  "Improve your health",
+                  "Develop better parenting skills",
+                  "Increase happiness",
+                  "Be the best version of yourself!",
+                ]}
+              />
               <div className="statistics__content--details">
                 <div className="statistics__data">
                   <div className="statistics__data--number">93%</div>
@@ -141,14 +146,17 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="statistics__content--header statistics__content--header-second">
-                <div className="statistics__heading">Expand your learning</div>
-                <div className="statistics__heading">Accomplish your goals</div>
-                <div className="statistics__heading">Strengthen your vitality</div>
-                <div className="statistics__heading">Become a better caregiver</div>
-                <div className="statistics__heading">Improve your mood</div>
-                <div className="statistics__heading">Maximize your abilities</div>
-              </div>
+              <Statistics
+                stats={[
+                  "Expand your learning",
+                  "Accomplish your goals",
+                  "Strengthen your vitality",
+                  "Become a better caregiver",
+                  "Improve your mood",
+                  "Maximize your abilities",
+                ]}
+                className={"statistics__content--header-second"}
+              />
             </div>
           </div>
         </div>
@@ -214,7 +222,7 @@ export default function Home() {
               </div>
             </div>
             <div className="reviews__btn--wrapper">
-              <button className="btn home__cta--btn">Login</button>
+              <LoginButton />
             </div>
           </div>
         </div>
