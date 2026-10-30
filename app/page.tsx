@@ -4,8 +4,8 @@ import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import { RiLeafLine } from "react-icons/ri";
 import LoginButton from "./components/UI/LoginButton";
-import NavLogin from "./components/NavLogin";
-import Statistics from "./components/Statistics";
+import NavLogin from "./components/auth/NavLogin";
+import Statistics from "./components/home/Statistics";
 
 export default function Home() {
   return (
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       </nav>
       <section id="landing">
-        <div className="container">
+        <div className="section__container">
           <div className="row">
             <div className="landing__wrapper">
               <div className="landing__content">
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </section>
       <section id="features">
-        <div className="container">
+        <div className="section__container">
           <div className="row">
             <div className="section__title">Understand books in few minutes</div>
             <div className="features__wrapper">
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
       <section id="reviews">
         <div className="row">
-          <div className="container">
+          <div className="section__container">
             <div className="section__title">What our members say</div>
             <div className="reviews__wrapper">
               <div className="review">
@@ -228,7 +228,7 @@ export default function Home() {
         </div>
       </section>
       <section id="numbers">
-        <div className="container">
+        <div className="section__container">
           <div className="row">
             <div className="section__title">Start growing with Summarist now</div>
             <div className="numbers__wrapper">
@@ -261,7 +261,7 @@ export default function Home() {
         </div>
       </section>
       <section id="footer">
-        <div className="container">
+        <div className="section__container">
           <div className="row">
             <div className="footer__top--wrapper">
               <div className="footer__block">

@@ -1,11 +1,11 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../Redux/store";
-import { closeModal } from "../Redux/slices/modalSlice";
+import { AppDispatch, RootState } from "../../Redux/store";
+import { closeModal } from "../../Redux/slices/modalSlice";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
-import OrDivider from "./UI/OrDivider";
+import OrDivider from "../UI/OrDivider";
 import { IoClose } from "react-icons/io5";
 import {
   createUserWithEmailAndPassword,
@@ -13,7 +13,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../lib/firebase/firebase";
+import { auth } from "../../lib/firebase/firebase";
 import { useRouter } from "next/navigation";
 import ResetPasswordForm from "./ResetPasswordForm";
 
