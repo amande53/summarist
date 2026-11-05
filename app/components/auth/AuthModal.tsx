@@ -185,7 +185,10 @@ export default function AuthModal() {
               setIsReset(false);
             }}
           >
-            <IoClose className="transition-opacity duration-200 hover:opacity-50 w-7 h-7" />
+            <IoClose
+              className="transition-opacity duration-200 hover:opacity-50 w-7 h-7"
+              aria-label="Close"
+            />
           </button>
         </div>
       </div>

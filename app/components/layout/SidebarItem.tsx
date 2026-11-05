@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { closeSidebar } from "../../Redux/slices/sidebarSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../Redux/store";
 
 interface SidebarItemProps {
   label: string;
@@ -12,8 +15,8 @@ interface SidebarItemProps {
 
 export default function SidebarItem({ label, destination, icon, onClick }: SidebarItemProps) {
   const pathName = usePathname();
-  console.log(pathName);
   const isActive = pathName === destination;
+  const dispatch = useDispatch<AppDispatch>();
   const content = (
     <>
       <div className={`w-1.25 h-full mr-4 ${isActive ? "bg-[#2bd97c]" : "bg-transparent"}`} />
@@ -28,6 +31,7 @@ export default function SidebarItem({ label, destination, icon, onClick }: Sideb
       <Link
         href={destination}
         className={itemClasses}
+        onClick={() => dispatch(closeSidebar())}
       >
         {content}
       </Link>

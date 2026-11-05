@@ -7,6 +7,7 @@ import { AppDispatch, RootState } from "../../Redux/store";
 import { openModal } from "../../Redux/slices/modalSlice";
 import { auth } from "../../lib/firebase/firebase";
 import SidebarItem from "./SidebarItem";
+import { closeSidebar } from "../../Redux/slices/sidebarSlice";
 
 export default function SidebarLogin() {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,7 +21,10 @@ export default function SidebarLogin() {
       <SidebarItem
         label="Logout"
         icon={<MdLogout />}
-        onClick={() => signOut(auth)}
+        onClick={() => {
+          signOut(auth);
+          dispatch(closeSidebar());
+        }}
       />
     );
   }
@@ -29,7 +33,10 @@ export default function SidebarLogin() {
     <SidebarItem
       label="Login"
       icon={<MdLogin />}
-      onClick={() => dispatch(openModal())}
+      onClick={() => {
+        dispatch(openModal());
+        dispatch(closeSidebar());
+      }}
     />
   );
 }
