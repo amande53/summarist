@@ -7,9 +7,10 @@ interface SidebarItemProps {
   label: string;
   destination?: string;
   icon: React.ReactNode;
+  onClick?: () => void;
 }
 
-export default function SidebarItem({ label, destination, icon }: SidebarItemProps) {
+export default function SidebarItem({ label, destination, icon, onClick }: SidebarItemProps) {
   const pathName = usePathname();
   console.log(pathName);
   const isActive = pathName === destination;
@@ -32,5 +33,17 @@ export default function SidebarItem({ label, destination, icon }: SidebarItemPro
       </Link>
     );
   }
+
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        className={`${itemClasses} w-full text-left`}
+      >
+        {content}
+      </button>
+    );
+  }
+
   return <div className={`${itemClasses} cursor-not-allowed`}>{content}</div>;
 }

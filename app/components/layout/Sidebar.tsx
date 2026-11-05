@@ -3,6 +3,7 @@ import { RiBallPenLine, RiBookmarkLine, RiSettings2Line } from "react-icons/ri";
 import SidebarItem from "./SidebarItem";
 import { FiHelpCircle } from "react-icons/fi";
 import Image from "next/image";
+import SidebarLogin from "./SidebarLogin";
 export default function Sidebar() {
   return (
     <>
@@ -49,6 +50,7 @@ export default function Sidebar() {
               label="Help & Support"
               icon={<FiHelpCircle />}
             />
+            <SidebarLogin />
           </div>
         </div>
       </aside>
