@@ -26,7 +26,7 @@ export default function SearchResults({ results, isLoading }: SearchResultsProps
           />
           <div>
             <div className="text-base text-[#032b41] font-medium mb-2">{book.title}</div>
-            <div className="text-sm font-light text-[#6b757b] mb-2">{book.author}</div>
+            <div className="text-sm font-light text-[#6b757b] mb-2 ">{book.author}</div>
           </div>
         </Link>
       ))}
