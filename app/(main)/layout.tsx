@@ -1,4 +1,5 @@
 import MenuButton from "../components/layout/MenuButton";
+import SearchBar from "../components/layout/SearchBar";
 import Sidebar from "../components/layout/Sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -6,10 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <section>
       <Sidebar />
       <div className="md:ml-50">
-        <div>
-          {" "}
-          Search bar goes Here <MenuButton />
-        </div>
+        <SearchBar />
         {children}
       </div>
     </section>
