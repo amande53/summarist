@@ -1,8 +1,8 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../Redux/store";
-import { openModal } from "../Redux/slices/modalSlice";
+import { AppDispatch } from "../../Redux/store";
+import { openModal } from "../../Redux/slices/modalSlice";
 
 export default function NavLogin() {
   const dispatch = useDispatch<AppDispatch>();

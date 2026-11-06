@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../lib/firebase/firebase";
+import { auth } from "../../lib/firebase/firebase";
 import { useDispatch } from "react-redux";
-import { clearUser, setUser } from "../Redux/slices/userSlice";
+import { clearUser, setUser } from "../../Redux/slices/userSlice";
 
 export default function AuthListener() {
   const dispatch = useDispatch();

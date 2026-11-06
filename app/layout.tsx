@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import StoreProvider from "./Redux/storeProvider";
-import AuthModal from "./components/AuthModal";
+import AuthModal from "./components/auth/AuthModal";
 
 export const metadata: Metadata = {
   title: "Summarist",
