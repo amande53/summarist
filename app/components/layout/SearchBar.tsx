@@ -4,12 +4,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import MenuButton from "./MenuButton";
 import { useState, useEffect } from "react";
 import { searchBooks } from "../../lib/api";
-import { Book } from "../../types/Book";
+import type { Book } from "../../types/Book";
 
 export default function SearchBar() {
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery, setDebouncedQuery] = useState<string>("");
   const [results, setResults] = useState<Book[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
@@ -17,13 +19,21 @@ export default function SearchBar() {
 
     return () => clearTimeout(timer);
   }, [query]);
+
   useEffect(() => {
     if (!debouncedQuery.trim()) {
       setResults([]);
       return;
     }
     const getResults = async () => {
-      setResults(await searchBooks(debouncedQuery));
+      setIsLoading(true);
+      try {
+        setResults(await searchBooks(debouncedQuery));
+      } catch {
+        setResults([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     getResults();
