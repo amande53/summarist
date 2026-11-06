@@ -5,6 +5,7 @@ import MenuButton from "./MenuButton";
 import { useState, useEffect } from "react";
 import { searchBooks } from "../../lib/api";
 import type { Book } from "../../types/Book";
+import SearchResults from "./SearchResults";
 
 export default function SearchBar() {
   const [query, setQuery] = useState<string>("");
@@ -40,7 +41,7 @@ export default function SearchBar() {
   }, [debouncedQuery]);
   return (
     <div className="bg-white border-b border-[#e1e7ea] h-20">
-      <div className="flex items-center justify-between max-w-267.5 h-full mx-auto px-8">
+      <div className="flex relative items-center justify-between max-w-267.5 h-full mx-auto px-8">
         <div className="flex items-center gap-6 ml-auto w-full max-w-85">
           <div className="relative w-full">
             <input
@@ -56,6 +57,12 @@ export default function SearchBar() {
           </div>
           <MenuButton />
         </div>
+        {debouncedQuery.trim() && (
+          <SearchResults
+            results={results}
+            isLoading={isLoading}
+          />
+        )}
       </div>
     </div>
   );
