@@ -1,4 +1,3 @@
-import MenuButton from "../components/layout/MenuButton";
 import SearchBar from "../components/layout/SearchBar";
 import Sidebar from "../components/layout/Sidebar";
 

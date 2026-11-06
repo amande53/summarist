@@ -5,10 +5,9 @@ import SidebarItem from "./SidebarItem";
 import { FiHelpCircle } from "react-icons/fi";
 import Image from "next/image";
 import SidebarLogin from "./SidebarLogin";
-import { openSidebar, closeSidebar } from "../../Redux/slices/sidebarSlice";
+import { closeSidebar } from "../../Redux/slices/sidebarSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../Redux/store";
-import { UseDispatch } from "react-redux";
 
 export default function Sidebar() {
   const dispatch = useDispatch<AppDispatch>();
