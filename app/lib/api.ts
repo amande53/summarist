@@ -21,3 +21,9 @@ export async function getSelectedBook(): Promise<Book> {
   const data = await res.json();
   return data[0];
 }
+
+export async function getBook(id: string): Promise<Book> {
+  const res = await fetch(`${BASE_URL}/getBook?id=${id}`);
+  const data = await res.json();
+  return data;
+}
