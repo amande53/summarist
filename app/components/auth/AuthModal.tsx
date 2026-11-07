@@ -66,7 +66,7 @@ export default function AuthModal() {
               <>{newUser ? "Sign up" : "Log In"} to Summarist</>
             )}
           </div>
-          {error && <div className="mb-4 text-[#f56c6c]">Firebase: Error {error}</div>}
+          {error && <div className="mb-4 text-error">Firebase: Error {error}</div>}
           {!newUser && !isReset && (
             <>
               <button
@@ -131,18 +131,18 @@ export default function AuthModal() {
               <input
                 type="email"
                 placeholder="Email Address"
-                className="h-10 border-2 border-[#bac8ce] rounded-sm text-[#394547] px-3 focus:border-[#2bd97c] focus:outline-hidden"
+                className="h-10 border-2 border-line-dark rounded-sm text-ink px-3 focus:border-green focus:outline-hidden"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="h-10 border-2 border-[#bac8ce] rounded-sm text-[#394547] px-3 focus:border-[#2bd97c] focus:outline-hidden"
+                className="h-10 border-2 border-line-dark rounded-sm text-ink px-3 focus:border-green focus:outline-hidden"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button className="w-full h-10 rounded-sm text-base flex items-center bg-[#2bd97c] justify-center  min-w-45 hover:bg-[#20ba68] duration-200">
+              <button className="w-full h-10 rounded-sm text-base flex items-center bg-green justify-center  min-w-45 hover:bg-green-dark duration-200">
                 {newUser ? "Sign Up" : "Login"}
               </button>
             </form>
@@ -151,7 +151,7 @@ export default function AuthModal() {
         </div>
         {!newUser && !isReset && (
           <div
-            className="text-center text-[#116be9] font-light text-sm w-fit mx-auto mb-4 cursor-pointer hover:text-[#124a98]"
+            className="text-center text-link font-light text-sm w-fit mx-auto mb-4 cursor-pointer hover:text-[#124a98]"
             onClick={() => {
               setIsReset(true);
               setError("");
@@ -161,7 +161,7 @@ export default function AuthModal() {
           </div>
         )}
         <button
-          className="h-10 text-center bg-stone-100 text-[#116be9] w-full rounded-[0_0_4px_4px] font-light text-base hover:bg-mist-200"
+          className="h-10 text-center bg-stone-100 text-link w-full rounded-[0_0_4px_4px] font-light text-base hover:bg-mist-200"
           onClick={() => {
             setError("");
             if (isReset) {

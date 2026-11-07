@@ -24,8 +24,8 @@ export default function BookSection({ title, subTitle, status }: BookSectionProp
 
   return (
     <div>
-      <div className="text-2xl font-bold text-[#032b41] mb-4">{title}</div>
-      {subTitle && <div className="font-light mb-4 text-[#394547]">{subTitle}</div>}
+      <div className="text-2xl font-bold text-navy mb-4">{title}</div>
+      {subTitle && <div className="font-light mb-4 text-ink">{subTitle}</div>}
       <Suspense fallback={fallback}>
         {status === "selected" ? <SelectedBook /> : <BookRow status={status} />}
       </Suspense>

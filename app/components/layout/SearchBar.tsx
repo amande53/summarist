@@ -40,18 +40,18 @@ export default function SearchBar() {
     getResults();
   }, [debouncedQuery]);
   return (
-    <div className="bg-white border-b border-[#e1e7ea] h-20 sticky top-0 z-1">
+    <div className="bg-white border-b border-line h-20 sticky top-0 z-1">
       <div className="flex relative items-center justify-between max-w-267.5 h-full mx-auto px-8">
         <div className="flex items-center gap-6 ml-auto w-full max-w-85">
           <div className="relative w-full">
             <input
               type="text"
               placeholder="Search for books"
-              className="w-full h-10 pl-4 pr-10 bg-[#f1f6f4] text-[#042330] border-2 border-[#e1e7ea] rounded-lg outline-hidden"
+              className="w-full h-10 pl-4 pr-10 bg-mist text-[#042330] border-2 border-line rounded-lg outline-hidden"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center pl-2 border-l-2 border-[#e1e7ea] text-[#03314b] text-xl h-6">
+            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center pl-2 border-l-2 border-line text-[#03314b] text-xl h-6">
               {query ? (
                 <button
                   className="cursor-pointer"
