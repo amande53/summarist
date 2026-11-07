@@ -16,7 +16,7 @@ export default function Statistics({ stats, className }: Statistics) {
     }, 2000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [stats.length]);
 
   return (
     <div className={`statistics__content--header ${className ?? ""}`}>

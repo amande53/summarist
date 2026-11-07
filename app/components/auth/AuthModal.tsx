@@ -16,6 +16,7 @@ import {
 import { auth } from "../../lib/firebase/firebase";
 import { useRouter } from "next/navigation";
 import ResetPasswordForm from "./ResetPasswordForm";
+import Image from "next/image";
 
 export default function AuthModal() {
   const dispatch = useDispatch<AppDispatch>();
@@ -108,10 +109,12 @@ export default function AuthModal() {
                 }}
               >
                 <span className="flex items-center justify-center w-9 h-9 rounded-sm bg-white absolute left-0.5">
-                  <img
+                  <Image
                     alt="Google"
                     src="/assets/google.png"
                     className="w-6 h-6"
+                    width={24}
+                    height={24}
                   />
                 </span>
                 {newUser ? "Sign up" : "Login"} with Google
@@ -184,11 +187,9 @@ export default function AuthModal() {
               setError("");
               setIsReset(false);
             }}
+            aria-label="Close"
           >
-            <IoClose
-              className="transition-opacity duration-200 hover:opacity-50 w-7 h-7"
-              aria-label="Close"
-            />
+            <IoClose className="transition-opacity duration-200 hover:opacity-50 w-7 h-7" />
           </button>
         </div>
       </div>
