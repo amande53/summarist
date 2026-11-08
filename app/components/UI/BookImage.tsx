@@ -14,7 +14,7 @@ export default function BookImage({ src, alt, size }: BookImageProps) {
 
   return (
     <div
-      className={isLoaded ? "" : "bg-[#e4e4e4]"}
+      className={isLoaded ? "" : "bg-skeleton"}
       style={{ width: size, height: size, minWidth: size }}
     >
       <Image

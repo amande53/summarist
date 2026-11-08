@@ -1,6 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @import "tailwindcss";
 
+@theme {
+  /* Text */
+  --color-navy: #032b41;
+  --color-ink: #394547;
+  --color-muted: #6b757b;
+
+  /* Brand green */
+  --color-green: #2bd97c;
+  --color-green-dark: #20ba68;
+
+  /* Borders and backgrounds */
+  --color-line: #e1e7ea;
+  --color-line-dark: #bac8ce;
+  --color-mist: #f1f6f4;
+  --color-skeleton: #e4e4e4;
+
+  /* States */
+  --color-error: #f56c6c;
+  --color-link: #116be9;
+}
+
 @layer components {
   * {
     margin: 0;

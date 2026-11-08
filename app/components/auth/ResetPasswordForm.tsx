@@ -29,19 +29,19 @@ export default function ResetPasswordForm() {
       onSubmit={handleSubmit}
     >
       {error ? (
-        <span className="mb-4 text-[#f56c6c]">{message}</span>
+        <span className="mb-4 text-error">{message}</span>
       ) : (
-        <span className="mb-4 text-[#2bd97c]">{message}</span>
+        <span className="mb-4 text-green">{message}</span>
       )}
       <input
         type="email"
         placeholder="Email address"
-        className="h-10 w-full border-2 border-[#bac8ce] rounded-sm text-[#394547] px-3 focus:border-[#2bd97c] focus:outline-hidden"
+        className="h-10 w-full border-2 border-line-dark rounded-sm text-ink px-3 focus:border-green focus:outline-hidden"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <button
-        className="w-full h-10 rounded-sm text-base flex items-center bg-[#2bd97c] justify-center  min-w-45 hover:bg-[#20ba68] duration-200"
+        className="w-full h-10 rounded-sm text-base flex items-center bg-green justify-center  min-w-45 hover:bg-green-dark duration-200"
         type="submit"
       >
         Send reset password link
