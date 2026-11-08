@@ -22,19 +22,19 @@ export default function Statistics({ stats, className }: Statistics) {
     <div className={`statistics__content--header ${className ?? ""}`}>
       {stats.map((stat, index) =>
         position === index ? (
-          <div
+          <p
             key={stat}
             className="statistics__heading statistics__heading--active"
           >
             {stat}
-          </div>
+          </p>
         ) : (
-          <div
+          <p
             key={stat}
             className="statistics__heading"
           >
             {stat}
-          </div>
+          </p>
         )
       )}
     </div>

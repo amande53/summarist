@@ -59,14 +59,14 @@ export default function AuthModal() {
     <div className="fixed top-0 left-0 h-full bg-black/75  flex justify-center items-center flex-col w-full z-9999">
       <div className="relative max-w-100 bg-white rounded-lg shadow-[0_0_10px_rgba(0,0,0,.2)] w-full z-9999">
         <div className="pt-12 pb-6 px-8">
-          <div className="text-center text-xl font-bold mb-6 text-sky-950">
+          <h2 className="text-center text-xl font-bold mb-6 text-sky-950">
             {isReset && !newUser ? (
               "Reset your password"
             ) : (
               <>{newUser ? "Sign up" : "Log In"} to Summarist</>
             )}
-          </div>
-          {error && <div className="mb-4 text-error">Firebase: Error {error}</div>}
+          </h2>
+          {error && <p className="mb-4 text-error">Firebase: Error {error}</p>}
           {!newUser && !isReset && (
             <>
               <button
@@ -150,15 +150,16 @@ export default function AuthModal() {
           {isReset && <ResetPasswordForm />}
         </div>
         {!newUser && !isReset && (
-          <div
-            className="text-center text-link font-light text-sm w-fit mx-auto mb-4 cursor-pointer hover:text-[#124a98]"
+          <button
+            type="button"
+            className="block text-center text-link font-light text-sm w-fit mx-auto mb-4 cursor-pointer hover:text-[#124a98]"
             onClick={() => {
               setIsReset(true);
               setError("");
             }}
           >
             Forgot your password?
-          </div>
+          </button>
         )}
         <button
           className="h-10 text-center bg-stone-100 text-link w-full rounded-[0_0_4px_4px] font-light text-base hover:bg-mist-200"

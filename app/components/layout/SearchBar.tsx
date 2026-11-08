@@ -40,7 +40,7 @@ export default function SearchBar() {
     getResults();
   }, [debouncedQuery]);
   return (
-    <div className="bg-white border-b border-line h-20 sticky top-0 z-1">
+    <header className="bg-white border-b border-line h-20 sticky top-0 z-1">
       <div className="flex relative items-center justify-between max-w-267.5 h-full mx-auto px-8">
         <div className="flex items-center gap-6 ml-auto w-full max-w-85">
           <div className="relative w-full">
@@ -77,6 +77,6 @@ export default function SearchBar() {
           />
         )}
       </div>
-    </div>
+    </header>
   );
 }

@@ -29,9 +29,9 @@ export default function ResetPasswordForm() {
       onSubmit={handleSubmit}
     >
       {error ? (
-        <span className="mb-4 text-error">{message}</span>
+        <p className="mb-4 text-error">{message}</p>
       ) : (
-        <span className="mb-4 text-green">{message}</span>
+        <p className="mb-4 text-green">{message}</p>
       )}
       <input
         type="email"

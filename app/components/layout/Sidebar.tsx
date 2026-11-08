@@ -38,7 +38,7 @@ export default function Sidebar() {
             loading="lazy"
           />
         </div>
-        <div className="flex flex-col justify-between h-[calc(100vh-60px)] pb-5 overflow-auto">
+        <nav className="flex flex-col justify-between h-[calc(100vh-60px)] pb-5 overflow-auto">
           <div className="flex-1 mt-10">
             <SidebarItem
               label="For You"
@@ -71,7 +71,7 @@ export default function Sidebar() {
             />
             <SidebarLogin />
           </div>
-        </div>
+        </nav>
       </aside>
     </>
   );
