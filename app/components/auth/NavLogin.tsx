@@ -8,11 +8,13 @@ export default function NavLogin() {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <li
-      className="nav__list nav__list--login"
-      onClick={() => dispatch(openModal())}
-    >
-      Login
+    <li className="nav__list nav__list--login">
+      <button
+        type="button"
+        onClick={() => dispatch(openModal())}
+      >
+        Login
+      </button>
     </li>
   );
 }
