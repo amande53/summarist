@@ -14,6 +14,7 @@ export default function AudioPlayer({ audioLink, title, author, imageLink }: Aud
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(0);
+  const progress = duration ? (currentTime / duration) * 100 : 0;
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -90,7 +91,12 @@ export default function AudioPlayer({ audioLink, title, author, imageLink }: Aud
           aria-label="Seek"
           max={duration}
           value={currentTime}
-          className="w-full accent-green cursor-pointer"
+          className="w-full h-1.5 rounded-full appearance-none cursor-pointer
+            [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green
+            [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-green [&::-moz-range-thumb]:border-0"
+          style={{
+            background: `linear-gradient(to right, var(--color-green) ${progress}%, #efefef ${progress}%)`,
+          }}
           onChange={(e) => {
             const audio = audioRef.current;
             if (!audio) return;
