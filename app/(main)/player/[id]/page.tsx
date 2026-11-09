@@ -1,4 +1,5 @@
 import AudioPlayer from "../../../components/player/AudioPlayer";
+import Summary from "../../../components/player/Summary";
 import { getBook } from "../../../lib/api";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
@@ -11,9 +12,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <h1 className="text-navy text-xl md:text-2xl border-b border-b-line mb-8 pb-4 leading-normal font-bold">
           {book.title}
         </h1>
-        <p className="text-sm md:text-base  whitespace-pre-line leading-[1.4] text-navy">
-          {book.summary}
-        </p>
+        <Summary summary={book.summary} />
       </div>
       <AudioPlayer
         audioLink={book.audioLink}

@@ -1,6 +1,7 @@
 "use client";
 import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
-import { RiBallPenLine, RiSettings2Line } from "react-icons/ri";
+import { RiBallPenLine } from "react-icons/ri";
+import { RxGear } from "react-icons/rx";
 import SidebarItem from "./SidebarItem";
 import { FiHelpCircle } from "react-icons/fi";
 import Image from "next/image";
@@ -16,6 +17,7 @@ export default function Sidebar() {
   const dispatch = useDispatch<AppDispatch>();
   const isOpen = useSelector((state: RootState) => state.sidebarSlice.isOpen);
   const pathname = usePathname();
+  const isPlayer = pathname.startsWith("/player");
 
   return (
     <>
@@ -42,7 +44,11 @@ export default function Sidebar() {
             loading="lazy"
           />
         </div>
-        <nav className="flex flex-col justify-between h-[calc(100vh-60px)] pb-5 overflow-auto">
+        <nav
+          className={`flex flex-col justify-between pb-5 overflow-auto ${
+            isPlayer ? "h-[calc(100vh-140px)]" : "h-[calc(100vh-60px)]"
+          }`}
+        >
           <div className="flex-1 mt-10">
             <SidebarItem
               label="For You"
@@ -62,13 +68,13 @@ export default function Sidebar() {
               label="Search"
               icon={<AiOutlineSearch />}
             />
+            {isPlayer && <FontSizeControls />}
           </div>
-          {pathname.startsWith("/player") && <FontSizeControls />}
           <div>
             <SidebarItem
               label="Settings"
               destination="/settings"
-              icon={<RiSettings2Line />}
+              icon={<RxGear />}
             />
             <SidebarItem
               label="Help & Support"
