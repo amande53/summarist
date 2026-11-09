@@ -1,6 +1,6 @@
 "use client";
 import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
-import { RiBallPenLine, RiBookmarkLine, RiSettings2Line } from "react-icons/ri";
+import { RiBallPenLine, RiSettings2Line } from "react-icons/ri";
 import SidebarItem from "./SidebarItem";
 import { FiHelpCircle } from "react-icons/fi";
 import Image from "next/image";
@@ -8,10 +8,14 @@ import SidebarLogin from "./SidebarLogin";
 import { closeSidebar } from "../../Redux/slices/sidebarSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../Redux/store";
+import { usePathname } from "next/navigation";
+import FontSizeControls from "./FontSizeControls";
+import { BsBookmark } from "react-icons/bs";
 
 export default function Sidebar() {
   const dispatch = useDispatch<AppDispatch>();
   const isOpen = useSelector((state: RootState) => state.sidebarSlice.isOpen);
+  const pathname = usePathname();
 
   return (
     <>
@@ -48,7 +52,7 @@ export default function Sidebar() {
             <SidebarItem
               label="My Library"
               destination="/library"
-              icon={<RiBookmarkLine />}
+              icon={<BsBookmark />}
             />
             <SidebarItem
               label="Highlights"
@@ -59,6 +63,7 @@ export default function Sidebar() {
               icon={<AiOutlineSearch />}
             />
           </div>
+          {pathname.startsWith("/player") && <FontSizeControls />}
           <div>
             <SidebarItem
               label="Settings"
