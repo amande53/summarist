@@ -1,3 +1,4 @@
+import AudioPlayer from "../../../components/player/AudioPlayer";
 import { getBook } from "../../../lib/api";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
@@ -14,6 +15,12 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           {book.summary}
         </p>
       </div>
+      <AudioPlayer
+        audioLink={book.audioLink}
+        title={book.title}
+        author={book.author}
+        imageLink={book.imageLink}
+      />
     </section>
   );
 }
