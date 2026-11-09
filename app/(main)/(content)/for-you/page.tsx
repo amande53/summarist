@@ -1,4 +1,4 @@
-import BookSection from "../../components/for-you/BookSection";
+import BookSection from "../../../components/for-you/BookSection";
 
 export default function Page() {
   return (

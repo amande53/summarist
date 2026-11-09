@@ -1,10 +1,10 @@
-import BookImage from "../../../components/UI/BookImage";
-import { getBook } from "../../../lib/api";
+import BookImage from "../../../../components/UI/BookImage";
+import { getBook } from "../../../../lib/api";
 import { AiOutlineStar, AiOutlineAudio } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { BsBookmark } from "react-icons/bs";
-import BookDetail from "../../../components/book/BookDetail";
-import BookActions from "../../../components/book/BookActions";
+import BookDetail from "../../../../components/book/BookDetail";
+import BookActions from "../../../../components/book/BookActions";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
