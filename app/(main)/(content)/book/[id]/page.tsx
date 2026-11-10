@@ -1,10 +1,11 @@
-import BookImage from "../../../components/UI/BookImage";
-import { getBook } from "../../../lib/api";
-import { AiOutlineStar, AiOutlineAudio } from "react-icons/ai";
+import BookImage from "../../../../components/UI/BookImage";
+import { getBook } from "../../../../lib/api";
+import { AiOutlineStar, AiOutlineAudio, AiOutlineClockCircle } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { BsBookmark } from "react-icons/bs";
-import BookDetail from "../../../components/book/BookDetail";
-import BookActions from "../../../components/book/BookActions";
+import BookDetail from "../../../../components/book/BookDetail";
+import BookActions from "../../../../components/book/BookActions";
+import AudioDuration from "../../../../components/UI/AudioDuration";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -26,7 +27,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                 {book.averageRating} ({book.totalRating} ratings)
               </span>
             </BookDetail>
+            <BookDetail icon={<AiOutlineClockCircle />}>
+              <AudioDuration audioLink={book.audioLink} />
+            </BookDetail>
             <BookDetail icon={<AiOutlineAudio />}>{book.type}</BookDetail>
+
             <BookDetail icon={<HiOutlineLightBulb />}>{book.keyIdeas} Key ideas</BookDetail>
           </div>
         </div>

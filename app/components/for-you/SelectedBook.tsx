@@ -1,6 +1,8 @@
 import { getSelectedBook } from "../../lib/api";
 import Link from "next/link";
 import BookImage from "../UI/BookImage";
+import { BsPlayFill } from "react-icons/bs";
+import AudioDuration from "../UI/AudioDuration";
 
 export default async function SelectedBook() {
   const book = await getSelectedBook();
@@ -21,6 +23,15 @@ export default async function SelectedBook() {
         <div className="w-full">
           <h3 className="font-semibold text-navy mb-2">{book.title}</h3>
           <p className="text-sm text-ink mb-4">{book.author}</p>
+          <div className="flex items-center gap-2">
+            <BsPlayFill className="size-10 bg-black text-white rounded-full py-1 pr-1 pl-1.5" />
+            <span className="text-sm font-medium text-navy">
+              <AudioDuration
+                audioLink={book.audioLink}
+                format="words"
+              />
+            </span>
+          </div>
         </div>
       </div>
     </Link>

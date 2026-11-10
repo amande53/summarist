@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Book } from "../../types/Book";
 import Skeleton from "../UI/Skeleton";
+import { BiTime } from "react-icons/bi";
+import AudioDuration from "../UI/AudioDuration";
 
 interface SearchResultsProps {
   results: Book[];
@@ -41,6 +43,10 @@ export default function SearchResults({ results, isLoading }: SearchResultsProps
               <div>
                 <h3 className="text-base text-navy font-medium mb-2">{book.title}</h3>
                 <p className="text-sm font-light text-muted mb-2">{book.author}</p>
+                <div className="flex items-center gap-1 text-sm text-muted font-light">
+                  <BiTime className="size-4" />
+                  <AudioDuration audioLink={book.audioLink} />
+                </div>
               </div>
             </Link>
           </li>

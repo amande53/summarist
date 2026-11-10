@@ -2,12 +2,12 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
-import { MdLogin, MdLogout } from "react-icons/md";
 import { AppDispatch, RootState } from "../../Redux/store";
 import { openModal } from "../../Redux/slices/modalSlice";
 import { auth } from "../../lib/firebase/firebase";
 import SidebarItem from "./SidebarItem";
 import { closeSidebar } from "../../Redux/slices/sidebarSlice";
+import { FiLogOut, FiLogIn } from "react-icons/fi";
 
 export default function SidebarLogin() {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,7 +20,7 @@ export default function SidebarLogin() {
     return (
       <SidebarItem
         label="Logout"
-        icon={<MdLogout />}
+        icon={<FiLogOut />}
         onClick={() => {
           signOut(auth);
           dispatch(closeSidebar());
@@ -32,7 +32,7 @@ export default function SidebarLogin() {
   return (
     <SidebarItem
       label="Login"
-      icon={<MdLogin />}
+      icon={<FiLogIn />}
       onClick={() => {
         dispatch(openModal());
         dispatch(closeSidebar());

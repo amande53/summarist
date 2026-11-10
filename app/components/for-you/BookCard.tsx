@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Book } from "../../types/Book";
 import { AiOutlineStar } from "react-icons/ai";
 import BookImage from "../UI/BookImage";
+import AudioDuration from "../UI/AudioDuration";
+import { BiTime } from "react-icons/bi";
 
 interface BookCardProps {
   book: Book;
@@ -29,6 +31,10 @@ export default function BookCard({ book }: BookCardProps) {
       <p className="text-sm text-muted font-light mb-2">{book.author}</p>
       <p className="text-sm text-ink mb-2">{book.subTitle}</p>
       <div className="flex gap-2">
+        <div className="flex items-center gap-1 text-sm text-muted font-light">
+          <BiTime className="size-4" />
+          <AudioDuration audioLink={book.audioLink} />
+        </div>
         <div className="flex items-center gap-1 text-sm text-muted font-light">
           <AiOutlineStar className="size-4" />
           <span>{book.averageRating}</span>

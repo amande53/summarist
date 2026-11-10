@@ -7,9 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <Sidebar />
       <div className="md:ml-50">
         <SearchBar />
-        <div className="w-full max-w-267.5 mx-auto my-0 px-6">
-          <main className="py-10 w-full">{children}</main>
-        </div>
+        {children}
       </div>
     </section>
   );
