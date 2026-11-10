@@ -12,7 +12,10 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <h1 className="text-navy text-xl md:text-2xl border-b border-b-line mb-8 pb-4 leading-normal font-bold">
           {book.title}
         </h1>
-        <Summary summary={book.summary} />
+        <Summary
+          summary={book.summary}
+          subscriptionRequired={book.subscriptionRequired}
+        />
       </div>
       <AudioPlayer
         audioLink={book.audioLink}

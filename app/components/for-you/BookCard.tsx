@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Book } from "../../types/Book";
 import { AiOutlineStar } from "react-icons/ai";
 import BookImage from "../UI/BookImage";
+import ShowIfNotSubscribed from "../UI/ShowIfNotSubscribed";
 import AudioDuration from "../UI/AudioDuration";
 import { BiTime } from "react-icons/bi";
 
@@ -16,9 +17,11 @@ export default function BookCard({ book }: BookCardProps) {
       className="relative snap-start pt-8 pb-3 px-3 rounded-sm max-w-50 w-full no-underline hover:bg-mist"
     >
       {book.subscriptionRequired && (
-        <span className="bg-navy w-fit h-4.5 px-2 absolute top-0 right-0 text-white text-[10px] flex items-center rounded-[20px]">
-          Premium
-        </span>
+        <ShowIfNotSubscribed>
+          <span className="bg-navy w-fit h-4.5 px-2 absolute top-0 right-0 text-white text-[10px] flex items-center rounded-[20px]">
+            Premium
+          </span>
+        </ShowIfNotSubscribed>
       )}
       <div className="mb-2">
         <BookImage
