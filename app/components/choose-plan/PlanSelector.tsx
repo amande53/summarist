@@ -3,10 +3,36 @@
 import { useState } from "react";
 import PlanCard from "./PlanCard";
 import OrDivider from "../UI/OrDivider";
+import { getCheckoutUrl, PRICE_IDS } from "../../lib/stripe/checkout";
+import { app } from "../../lib/firebase/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../Redux/store";
+import { openModal } from "../../Redux/slices/modalSlice";
+import { ImSpinner8 } from "react-icons/im";
 
 type Plan = "yearly" | "monthly";
 export default function PlanSelector() {
   const [selectedPlan, setSelectedPlan] = useState<Plan>("yearly");
+  const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const user = useSelector((state: RootState) => state.userSlice.user);
+
+  const handleCheckout = async () => {
+    if (!user) {
+      dispatch(openModal());
+      return;
+    }
+
+    setIsRedirecting(true);
+    try {
+      const url = await getCheckoutUrl(app, PRICE_IDS[selectedPlan]);
+      window.location.assign(url);
+    } catch (error) {
+      console.error(error);
+      setIsRedirecting(false);
+    }
+  };
+
   return (
     <div>
       <PlanCard
@@ -34,8 +60,19 @@ export default function PlanSelector() {
         <button
           type="button"
           className="btn w-75"
+          onClick={handleCheckout}
+          disabled={isRedirecting}
         >
-          {selectedPlan === "yearly" ? "Start your 7-day free trial " : "Start your first month"}
+          {isRedirecting ? (
+            <ImSpinner8
+              aria-label="Loading"
+              className="size-6 text-white animate-spin"
+            />
+          ) : selectedPlan === "yearly" ? (
+            "Start your free 7-day trial"
+          ) : (
+            "Start your first month"
+          )}
         </button>
         <p className="text-xs text-muted text-center">
           {selectedPlan === "yearly"

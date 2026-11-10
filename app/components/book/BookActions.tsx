@@ -17,7 +17,10 @@ export default function BookActions({ id, subscriptionRequired }: BookActionsPro
   const router = useRouter();
   const user = useSelector((state: RootState) => state.userSlice.user);
   const isLoading = useSelector((state: RootState) => state.userSlice.isLoading);
-  const isSubscribed = false;
+  const isSubscribed = useSelector((state: RootState) => state.userSlice.isSubscribed);
+  const isSubscriptionLoading = useSelector(
+    (state: RootState) => state.userSlice.isSubscriptionLoading
+  );
 
   const actions = [
     { label: "Read", icon: <AiOutlineRead /> },
@@ -36,7 +39,7 @@ export default function BookActions({ id, subscriptionRequired }: BookActionsPro
     return router.push(`/player/${id}`);
   };
 
-  if (isLoading) return <Skeleton className="w-76 h-12 mb-6" />;
+  if (isLoading || isSubscriptionLoading) return <Skeleton className="w-76 h-12 mb-6" />;
 
   return (
     <div className="flex gap-4 mb-6">
