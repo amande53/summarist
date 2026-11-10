@@ -1,4 +1,4 @@
-import AudioPlayerSkeleton from "../../../components/player/AudioPlayerSkeleton";
+import AudioPlayerSkeleton from "../../../components/UI/AudioPlayerSkeleton";
 import Spinner from "../../../components/UI/Spinner";
 
 export default function Loading() {

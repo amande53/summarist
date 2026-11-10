@@ -1,6 +1,6 @@
 import { GrBackTen, GrForwardTen } from "react-icons/gr";
 import { IoPlaySharp } from "react-icons/io5";
-import Skeleton from "../UI/Skeleton";
+import Skeleton from "./Skeleton";
 
 export default function AudioPlayerSkeleton() {
   return (
