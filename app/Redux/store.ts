@@ -13,6 +13,8 @@ export const store = configureStore({
   },
 });
 
+export const initialState = store.getState();
+
 // Infer the `RootState`, `AppDispatch`, and `AppStore` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
