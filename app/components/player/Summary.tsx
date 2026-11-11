@@ -30,7 +30,7 @@ export default function Summary({ summary, subscriptionRequired }: SummaryProps)
 
   if (isLoading) return <Spinner />;
 
-  if (!user) return <LoginPrompt />;
+  if (!user) return <LoginPrompt text="Log in to your account to read and listen to the book" />;
 
   if (isSubscriptionLoading || needsSubscription) return <Spinner />;
 
