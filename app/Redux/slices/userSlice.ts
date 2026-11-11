@@ -6,11 +6,15 @@ interface UserSlice {
     email: string | null;
   };
   isLoading: boolean;
+  isSubscribed: boolean;
+  isSubscriptionLoading: boolean;
 }
 
 const initialState: UserSlice = {
   user: null,
   isLoading: true,
+  isSubscribed: false,
+  isSubscriptionLoading: true,
 };
 
 const userSlice = createSlice({
@@ -21,6 +25,8 @@ const userSlice = createSlice({
     clearUser: (state) => {
       state.user = null;
       state.isLoading = false;
+      state.isSubscribed = false;
+      state.isSubscriptionLoading = false;
     },
 
     //when user is signed in
@@ -33,9 +39,16 @@ const userSlice = createSlice({
     ) => {
       state.user = action.payload;
       state.isLoading = false;
+      state.isSubscriptionLoading = true;
+    },
+
+    // When Firestore tells us whether the user has an active subscription
+    setSubscribed: (state, action: PayloadAction<boolean>) => {
+      state.isSubscribed = action.payload;
+      state.isSubscriptionLoading = false;
     },
   },
 });
 
-export const { clearUser, setUser } = userSlice.actions;
+export const { clearUser, setUser, setSubscribed } = userSlice.actions;
 export default userSlice.reducer;

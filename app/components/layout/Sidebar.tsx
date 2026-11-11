@@ -34,7 +34,7 @@ export default function Sidebar() {
     w-4/5 md:w-50
     ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
-        <div className="flex items-center justify-center h-15 pt-4 max-w-40 my-0 mx-auto">
+        <div className="flex items-center justify-center h-15 pt-4 max-w-40  mx-auto">
           <Image
             src="/assets/logo.png"
             alt="Summarist Logo"

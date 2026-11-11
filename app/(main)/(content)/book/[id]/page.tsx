@@ -5,6 +5,7 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 import { BsBookmark } from "react-icons/bs";
 import BookDetail from "../../../../components/book/BookDetail";
 import BookActions from "../../../../components/book/BookActions";
+import ShowIfNotSubscribed from "../../../../components/UI/ShowIfNotSubscribed";
 import AudioDuration from "../../../../components/UI/AudioDuration";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
@@ -15,7 +16,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-4">
       <div className="w-full ">
         <h1 className="text-navy mb-4 font-semibold text-2xl md:text-[32px]">
-          {book.title} {book.subscriptionRequired && " (Premium)"}
+          {book.title}
+          {book.subscriptionRequired && <ShowIfNotSubscribed> (Premium)</ShowIfNotSubscribed>}
         </h1>
         <p className="text-navy text-sm font-semibold mb-4">{book.author}</p>
         <p className="text-navy mb-4 font-light text-[18px] md:text-xl">{book.subTitle}</p>
