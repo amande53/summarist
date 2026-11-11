@@ -4,17 +4,35 @@ import { GrBackTen, GrForwardTen } from "react-icons/gr";
 import type { Book } from "../../types/Book";
 import BookImage from "../UI/BookImage";
 import { IoPauseSharp, IoPlaySharp } from "react-icons/io5";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatTime } from "../../lib/formatTime";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/store";
+import { markFinished } from "../../lib/library";
 
-type AudioPlayerProps = Pick<Book, "audioLink" | "title" | "author" | "imageLink">;
+interface AudioPlayerProps {
+  book: Book;
+}
 
-export default function AudioPlayer({ audioLink, title, author, imageLink }: AudioPlayerProps) {
+export default function AudioPlayer({ book }: AudioPlayerProps) {
+  const { audioLink, title, author, imageLink } = book;
+  const user = useSelector((state: RootState) => state.userSlice.user);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const progress = duration ? (currentTime / duration) * 100 : 0;
+
+  // The audio can finish loading its length before React is listening for it,
+  // so also check once when the player appears (same fix as AudioDuration).
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (audio.readyState >= 1) {
+      setDuration(audio.duration);
+    }
+  }, []);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -42,7 +60,11 @@ export default function AudioPlayer({ audioLink, title, author, imageLink }: Aud
         src={audioLink}
         onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
         onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={() => {
+          setIsPlaying(false);
+          // Listening to the end puts the book on the "Finished" shelf
+          if (user) markFinished(user.id, book);
+        }}
       ></audio>
       <div className="w-full flex justify-center md:justify-start md:w-1/3">
         <div className="flex items-center gap-3">

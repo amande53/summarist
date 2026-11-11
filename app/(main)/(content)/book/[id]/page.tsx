@@ -7,6 +7,7 @@ import BookDetail from "../../../../components/book/BookDetail";
 import BookActions from "../../../../components/book/BookActions";
 import ShowIfNotSubscribed from "../../../../components/UI/ShowIfNotSubscribed";
 import AudioDuration from "../../../../components/UI/AudioDuration";
+import LibraryButton from "../../../../components/library/LibraryButton";
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -41,10 +42,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           id={book.id}
           subscriptionRequired={book.subscriptionRequired}
         />
-        <div className="flex items-center gap-2 text-[#0365f2] font-medium cursor-pointer mb-10 text-lg hover:text-[#044298] transition-colors duration-200">
-          <BsBookmark />
-          Add title to My Library
-        </div>
+        <LibraryButton book={book} />
         <h2 className="text-lg text-navy mb-4 font-semibold">What&apos;s it about?</h2>
         <ul className="flex flex-wrap gap-4 mb-4">
           {book.tags.map((tag) => (

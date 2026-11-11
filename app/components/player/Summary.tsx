@@ -7,6 +7,16 @@ import type { Book } from "../../types/Book";
 import LoginPrompt from "../auth/LoginPrompt";
 import Spinner from "../UI/Spinner";
 
+// Fills the whole summary area (the page's <main> is the positioned parent),
+// so the spinner sits in the middle of it instead of under the title.
+function CenteredSpinner() {
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      <Spinner />
+    </div>
+  );
+}
+
 type SummaryProps = Pick<Book, "summary" | "subscriptionRequired">;
 
 export default function Summary({ summary, subscriptionRequired }: SummaryProps) {
@@ -28,11 +38,11 @@ export default function Summary({ summary, subscriptionRequired }: SummaryProps)
     }
   }, [isSubscriptionLoading, needsSubscription, router]);
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <CenteredSpinner />;
 
   if (!user) return <LoginPrompt text="Log in to your account to read and listen to the book" />;
 
-  if (isSubscriptionLoading || needsSubscription) return <Spinner />;
+  if (isSubscriptionLoading || needsSubscription) return <CenteredSpinner />;
 
   return (
     <p
