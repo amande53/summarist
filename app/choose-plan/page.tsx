@@ -6,9 +6,11 @@ import { RiPlantFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
 import PlanSelector from "../components/choose-plan/PlanSelector";
 import Faq from "../components/choose-plan/Faq";
+import RedirectIfSubscribed from "../components/auth/RedirectIfSubscribed";
 export default function Page() {
   return (
     <>
+      <RedirectIfSubscribed />
       <section className="w-full">
         <div className="relative text-center w-full pt-12 mb-6 bg-navy md:rounded-b-[16rem]">
           <div className="max-w-250  mx-auto text-white py-0 px-6">
@@ -24,7 +26,7 @@ export default function Page() {
                 alt="Pricing"
                 width={860}
                 height={722}
-                loading="lazy"
+                loading="eager"
               />
             </div>
           </div>
